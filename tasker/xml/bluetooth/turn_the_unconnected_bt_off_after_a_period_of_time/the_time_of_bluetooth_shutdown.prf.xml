@@ -1,0 +1,46 @@
+<TaskerData sr="" dvi="1" tv="5.1m">
+	<Profile sr="prof1125" ve="2">
+		<clp>true</clp>
+		<id>1125</id>
+		<limit>true</limit>
+		<mid0>1126</mid0>
+		<nme>'The time of bluetooth shutdown</nme>
+		<Time sr="con0">
+			<fromvar>%TimeOfBluetoothShutdown</fromvar>
+			<tovar>%TimeOfBluetoothShutdown</tovar>
+		</Time>
+	</Profile>
+	<Task sr="task1126">
+		<id>1126</id>
+		<pri>6</pri>
+		<Action sr="act0" ve="7">
+			<code>35</code>
+			<Int sr="arg0" val="0"/>
+			<Int sr="arg1" val="1"/>
+			<Int sr="arg2" val="0"/>
+			<Int sr="arg3" val="0"/>
+			<Int sr="arg4" val="0"/>
+			<ConditionList sr="if">
+				<Condition sr="c0" ve="3">
+					<lhs>%TIMES-%TimeOfBluetoothShutdown</lhs>
+					<op>7</op>
+					<rhs>-1</rhs>
+				</Condition>
+			</ConditionList>
+		</Action>
+		<Action sr="act1" ve="7">
+			<code>37</code>
+			<ConditionList sr="if">
+				<Condition sr="c0" ve="3">
+					<lhs>%TimeOfBluetoothShutdown</lhs>
+					<op>12</op>
+					<rhs></rhs>
+				</Condition>
+			</ConditionList>
+		</Action>
+		<Action sr="act2" ve="7">
+			<code>294</code>
+			<Int sr="arg0" val="0"/>
+		</Action>
+	</Task>
+</TaskerData>

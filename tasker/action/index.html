@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+	<meta charset="UTF-8">
+	<title>Tasker Data Importer</title>
+    <link rel="icon" href="data:image/ico;base64,aWNv">
+</head>
+
+<body>
+    <p id='main'></p>
+    <noscript>
+     Your browser does not support JavaScript!
+    </noscript>
+</body>
+<script src="/assets/js/pako.min.js"></script>
+<script>
+
+const gzipBase64Encode = function(str) {
+    const gzStr = pako.gzip(str);
+    const arr = Array.from(gzStr);
+    let s = '';
+    arr.forEach((item, index) => {
+        s += String.fromCharCode(item);
+    });
+    return btoa(s);
+};
+
+async function getTkXml(path) {
+  const response = await fetch(path + '?t=' + Date.now());
+  const text = await response.text();
+  return text;
+}
+
+const getTkTypeFromXml = function(data) {
+    configs = ['project', 'profile', 'scene', 'task'];
+    for (var i = 0; i < configs.length; i++) {
+        const re = new RegExp('[\\s\\S]*<' + configs[i] + '\\s+sr(.|\\s)*?</n(|a)me>[\\s\\S]*', 'i');
+        console.log(re);
+        if (re.test(data)) {
+            return configs[i];
+        }
+    }
+    throw new Error('no type');
+};
+
+const getTkdataScheme = function(data) {
+    return 'tasker' + getTkTypeFromXml(data) + '://';
+};
+
+const getTkUri = function(data) {
+    return getTkdataScheme(data) + gzipBase64Encode(data);
+};
+
+
+(async () => {
+    console.log(btoa('hello  world'));
+    console.log(atob('aGVsbG8gIHdvcmxk'));
+    return;
+    document.getElementById('main').innerHTML = '<img src="/assets/image/loading.gif" width="16" /> Loading';
+    const query = document.location.search;
+    console.log(query);
+    const urlParams = new URLSearchParams(query);
+    const path = urlParams.get('p');
+    console.log(path);
+    const data = await getTkXml(path);
+    console.log(data);
+    const out = getTkUri(data);
+    const fname = path.replace(/^.*[\\\/]/, '');
+    document.getElementById('main').innerHTML = '<a href="' + out + '">Click to import</a>' + '  /  <a href="' + path + '" download="' + fname + '">Click to download</a>' + '  /  <a href="' + path + '" target="_blank">Raw</a>';
+})();
+
+</script>
+
+</html>

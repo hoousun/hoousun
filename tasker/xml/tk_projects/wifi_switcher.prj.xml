@@ -1,0 +1,1320 @@
+<TaskerData sr="" dvi="1" tv="5.1.9b.bf">
+	<Profile sr="prof222" ve="2">
+		<clp>true</clp>
+		<id>222</id>
+		<limit>true</limit>
+		<mid0>206</mid0>
+		<nme>'Switch WiFi when scan completed</nme>
+		<Event sr="con0" ve="2">
+			<code>599</code>
+			<Str sr="arg0" ve="3">android.net.wifi.SCAN_RESULTS</Str>
+			<Int sr="arg1" val="0"/>
+			<Int sr="arg2" val="0"/>
+			<Str sr="arg3" ve="3"/>
+			<Str sr="arg4" ve="3"/>
+		</Event>
+	</Profile>
+	<Profile sr="prof226" ve="2">
+		<id>226</id>
+		<mid0>209</mid0>
+		<nme>'WiFi scan completed flag</nme>
+		<Event sr="con0" ve="2">
+			<code>599</code>
+			<Str sr="arg0" ve="3">android.net.wifi.SCAN_RESULTS</Str>
+			<Int sr="arg1" val="0"/>
+			<Int sr="arg2" val="0"/>
+			<Str sr="arg3" ve="3"/>
+			<Str sr="arg4" ve="3"/>
+		</Event>
+	</Profile>
+	<Profile sr="prof228" ve="2">
+		<clp>true</clp>
+		<id>228</id>
+		<limit>true</limit>
+		<mid0>186</mid0>
+		<nme>'Switch WiFi when rssi changed</nme>
+		<Event sr="con0" ve="2">
+			<code>599</code>
+			<Str sr="arg0" ve="3">android.net.wifi.RSSI_CHANGED</Str>
+			<Int sr="arg1" val="0"/>
+			<Int sr="arg2" val="0"/>
+			<Str sr="arg3" ve="3"/>
+			<Str sr="arg4" ve="3"/>
+		</Event>
+	</Profile>
+	<Project sr="proj0" ve="2">
+		<name>WiFiSwitcher</name>
+		<pids>228,222,226</pids>
+		<tids>159,162,184,186,206,209,212,214</tids>
+	</Project>
+	<Task sr="task159">
+		<id>159</id>
+		<nme>stopWiFiSwitchingWhenDownloadingOrUploading</nme>
+		<pri>100</pri>
+		<Action sr="act0" ve="7">
+			<code>547</code>
+			<Str sr="arg0" ve="3">%traffic_stats_per_sec</Str>
+			<Str sr="arg1" ve="3">10240</Str>
+			<Int sr="arg2" val="0"/>
+			<Int sr="arg3" val="0"/>
+			<Int sr="arg4" val="0"/>
+		</Action>
+		<Action sr="act1" ve="7">
+			<code>547</code>
+			<Str sr="arg0" ve="3">%times</Str>
+			<Str sr="arg1" ve="3">1</Str>
+			<Int sr="arg2" val="0"/>
+			<Int sr="arg3" val="0"/>
+			<Int sr="arg4" val="0"/>
+		</Action>
+		<Action sr="act10" ve="7">
+			<code>547</code>
+			<Str sr="arg0" ve="3">%traffic_stats_per_sec_actual(2)</Str>
+			<Str sr="arg1" ve="3">(%%var_name2(2)-%%var_name2(1))/%times</Str>
+			<Int sr="arg2" val="0"/>
+			<Int sr="arg3" val="1"/>
+			<Int sr="arg4" val="0"/>
+		</Action>
+		<Action sr="act11" ve="7">
+			<code>37</code>
+			<ConditionList sr="if">
+				<bool0>Or</bool0>
+				<Condition sr="c0" ve="3">
+					<lhs>%traffic_stats_per_sec_actual(1)</lhs>
+					<op>7</op>
+					<rhs>%traffic_stats_per_sec</rhs>
+				</Condition>
+				<Condition sr="c1" ve="3">
+					<lhs>%traffic_stats_per_sec_actual(2)</lhs>
+					<op>7</op>
+					<rhs>%traffic_stats_per_sec</rhs>
+				</Condition>
+			</ConditionList>
+		</Action>
+		<Action sr="act12" ve="7">
+			<code>130</code>
+			<Str sr="arg0" ve="3">*stopCallerTasks</Str>
+			<Int sr="arg1">
+				<var>%priority</var>
+			</Int>
+			<Str sr="arg2" ve="3">0</Str>
+			<Str sr="arg3" ve="3"/>
+			<Str sr="arg4" ve="3"/>
+			<Int sr="arg5" val="0"/>
+		</Action>
+		<Action sr="act2" ve="7">
+			<code>547</code>
+			<Str sr="arg0" ve="3">%var_name</Str>
+			<Str sr="arg1" ve="3">download,upload</Str>
+			<Int sr="arg2" val="0"/>
+			<Int sr="arg3" val="0"/>
+			<Int sr="arg4" val="0"/>
+		</Action>
+		<Action sr="act3" ve="7">
+			<code>590</code>
+			<Str sr="arg0" ve="3">%var_name</Str>
+			<Str sr="arg1" ve="3">,</Str>
+			<Int sr="arg2" val="0"/>
+		</Action>
+		<Action sr="act4" ve="7">
+			<code>39</code>
+			<Str sr="arg0" ve="3">%num</Str>
+			<Str sr="arg1" ve="3">1:2</Str>
+		</Action>
+		<Action sr="act5" ve="7">
+			<code>664</code>
+			<Str sr="arg0" ve="3">%%var_name(1)(%num)</Str>
+			<Str sr="arg1" ve="3">TrafficStats</Str>
+			<Str sr="arg2" ve="3">getTotalRxBytes
+{long} ()</Str>
+			<Str sr="arg3" ve="3"/>
+			<Str sr="arg4" ve="3"/>
+			<Str sr="arg5" ve="3"/>
+			<Str sr="arg6" ve="3"/>
+			<Str sr="arg7" ve="3"/>
+			<Str sr="arg8" ve="3"/>
+			<Str sr="arg9" ve="3"/>
+		</Action>
+		<Action sr="act6" ve="7">
+			<code>664</code>
+			<Str sr="arg0" ve="3">%%var_name(2)(%num)</Str>
+			<Str sr="arg1" ve="3">TrafficStats</Str>
+			<Str sr="arg2" ve="3">getTotalTxBytes
+{long} ()</Str>
+			<Str sr="arg3" ve="3"/>
+			<Str sr="arg4" ve="3"/>
+			<Str sr="arg5" ve="3"/>
+			<Str sr="arg6" ve="3"/>
+			<Str sr="arg7" ve="3"/>
+			<Str sr="arg8" ve="3"/>
+			<Str sr="arg9" ve="3"/>
+		</Action>
+		<Action sr="act7" ve="7">
+			<code>30</code>
+			<Int sr="arg0" val="0"/>
+			<Int sr="arg1">
+				<var>%times</var>
+			</Int>
+			<Int sr="arg2" val="0"/>
+			<Int sr="arg3" val="0"/>
+			<Int sr="arg4" val="0"/>
+			<ConditionList sr="if">
+				<Condition sr="c0" ve="3">
+					<lhs>%num</lhs>
+					<op>6</op>
+					<rhs>2</rhs>
+				</Condition>
+			</ConditionList>
+		</Action>
+		<Action sr="act8" ve="7">
+			<code>40</code>
+		</Action>
+		<Action sr="act9" ve="7">
+			<code>547</code>
+			<Str sr="arg0" ve="3">%traffic_stats_per_sec_actual(1)</Str>
+			<Str sr="arg1" ve="3">(%%var_name1(2)-%%var_name1(1))/%times</Str>
+			<Int sr="arg2" val="0"/>
+			<Int sr="arg3" val="1"/>
+			<Int sr="arg4" val="0"/>
+		</Action>
+	</Task>
+	<Task sr="task162">
+		<id>162</id>
+		<nme>$getConfiguredNetworks</nme>
+		<pri>100</pri>
+		<Action sr="act0" ve="7">
+			<code>135</code>
+			<Int sr="arg0" val="1"/>
+			<Int sr="arg1" val="1"/>
+			<Str sr="arg2" ve="3">Exception</Str>
+			<ConditionList sr="if">
+				<Condition sr="c0" ve="3">
+					<lhs>%WIFI</lhs>
+					<op>2</op>
+					<rhs>on</rhs>
+				</Condition>
+			</ConditionList>
+		</Action>
+		<Action sr="act1" ve="7">
+			<code>425</code>
+			<Int sr="arg0" val="1"/>
+		</Action>
+		<Action sr="act2" ve="7">
+			<code>664</code>
+			<Str sr="arg0" ve="3">(WifiManager) wiman</Str>
+			<Str sr="arg1" ve="3">CONTEXT</Str>
+			<Str sr="arg2" ve="3">getSystemService
+{Object} (String)</Str>
+			<Str sr="arg3" ve="3">wifi</Str>
+			<Str sr="arg4" ve="3"/>
+			<Str sr="arg5" ve="3"/>
+			<Str sr="arg6" ve="3"/>
+			<Str sr="arg7" ve="3"/>
+			<Str sr="arg8" ve="3"/>
+			<Str sr="arg9" ve="3"/>
+		</Action>
+		<Action sr="act3" ve="7">
+			<code>664</code>
+			<Str sr="arg0" ve="3">%cfg_networks_list</Str>
+			<Str sr="arg1" ve="3">wiman</Str>
+			<Str sr="arg2" ve="3">getConfiguredNetworks
+{List} ()</Str>
+			<Str sr="arg3" ve="3"/>
+			<Str sr="arg4" ve="3"/>
+			<Str sr="arg5" ve="3"/>
+			<Str sr="arg6" ve="3"/>
+			<Str sr="arg7" ve="3"/>
+			<Str sr="arg8" ve="3"/>
+			<Str sr="arg9" ve="3"/>
+		</Action>
+		<Action sr="act4" ve="7">
+			<code>135</code>
+			<Int sr="arg0" val="1"/>
+			<Int sr="arg1" val="1"/>
+			<Str sr="arg2" ve="3">EXCEPTION</Str>
+			<ConditionList sr="if">
+				<Condition sr="c0" ve="3">
+					<lhs>%cfg_networks_list(#)</lhs>
+					<op>8</op>
+					<rhs>0</rhs>
+				</Condition>
+			</ConditionList>
+		</Action>
+		<Action sr="act5" ve="7">
+			<code>126</code>
+			<Str sr="arg0" ve="3">%cfg_networks_list()</Str>
+			<Int sr="arg1" val="1"/>
+		</Action>
+		<Action sr="act6" ve="7">
+			<code>130</code>
+			<label>Exception</label>
+			<Str sr="arg0" ve="3">*stopTasksBecauseException</Str>
+			<Int sr="arg1">
+				<var>%priority</var>
+			</Int>
+			<Str sr="arg2" ve="3">No WiFi network has been saved before.</Str>
+			<Str sr="arg3" ve="3">0</Str>
+			<Str sr="arg4" ve="3"/>
+			<Int sr="arg5" val="0"/>
+		</Action>
+	</Task>
+	<Task sr="task184">
+		<id>184</id>
+		<nme>*$getConnectableWiFi</nme>
+		<pri>100</pri>
+		<Action sr="act0" ve="7">
+			<code>549</code>
+			<Str sr="arg0" ve="3">%IsScanCompleted</Str>
+			<Int sr="arg1" val="0"/>
+			<Int sr="arg2" val="0"/>
+		</Action>
+		<Action sr="act1" ve="7">
+			<code>664</code>
+			<Str sr="arg0" ve="3">(WifiManager) wiman</Str>
+			<Str sr="arg1" ve="3">CONTEXT</Str>
+			<Str sr="arg2" ve="3">getSystemService
+{Object} (String)</Str>
+			<Str sr="arg3" ve="3">wifi</Str>
+			<Str sr="arg4" ve="3"/>
+			<Str sr="arg5" ve="3"/>
+			<Str sr="arg6" ve="3"/>
+			<Str sr="arg7" ve="3"/>
+			<Str sr="arg8" ve="3"/>
+			<Str sr="arg9" ve="3"/>
+		</Action>
+		<Action sr="act9" ve="7">
+			<code>590</code>
+			<Str sr="arg0" ve="3">%scan_results_list</Str>
+			<Str sr="arg1" ve="3">,</Str>
+			<Int sr="arg2" val="0"/>
+		</Action>
+		<Action sr="act10" ve="7">
+			<code>355</code>
+			<Str sr="arg0" ve="3">%wifiprms</Str>
+			<Int sr="arg1" val="1"/>
+			<Str sr="arg2" ve="3">"scanResults":[%scan_results_list()]</Str>
+			<Int sr="arg3" val="0"/>
+		</Action>
+		<Action sr="act11" ve="7">
+			<code>664</code>
+			<Str sr="arg0" ve="3">%cfg_networks_list</Str>
+			<Str sr="arg1" ve="3">wiman</Str>
+			<Str sr="arg2" ve="3">getConfiguredNetworks
+{List} ()</Str>
+			<Str sr="arg3" ve="3"/>
+			<Str sr="arg4" ve="3"/>
+			<Str sr="arg5" ve="3"/>
+			<Str sr="arg6" ve="3"/>
+			<Str sr="arg7" ve="3"/>
+			<Str sr="arg8" ve="3"/>
+			<Str sr="arg9" ve="3"/>
+		</Action>
+		<Action sr="act12" ve="7">
+			<code>37</code>
+			<ConditionList sr="if">
+				<Condition sr="c0" ve="3">
+					<lhs>%cfg_networks_list(#)</lhs>
+					<op>8</op>
+					<rhs>0</rhs>
+				</Condition>
+			</ConditionList>
+		</Action>
+		<Action sr="act13" ve="7">
+			<code>37</code>
+			<ConditionList sr="if">
+				<Condition sr="c0" ve="3">
+					<lhs>%CfgNetworksList</lhs>
+					<op>13</op>
+					<rhs></rhs>
+				</Condition>
+			</ConditionList>
+		</Action>
+		<Action sr="act14" ve="7">
+			<code>130</code>
+			<Str sr="arg0" ve="3">$getConfiguredNetworks</Str>
+			<Int sr="arg1">
+				<var>%priority</var>
+			</Int>
+			<Str sr="arg2" ve="3"/>
+			<Str sr="arg3" ve="3"/>
+			<Str sr="arg4" ve="3">%cfg_networks_list(1)</Str>
+			<Int sr="arg5" val="0"/>
+		</Action>
+		<Action sr="act15" ve="7">
+			<code>43</code>
+		</Action>
+		<Action sr="act16" ve="7">
+			<code>547</code>
+			<Str sr="arg0" ve="3">%cfg_networks_list</Str>
+			<Str sr="arg1" ve="3">%CfgNetworksList</Str>
+			<Int sr="arg2" val="0"/>
+			<Int sr="arg3" val="0"/>
+			<Int sr="arg4" val="0"/>
+		</Action>
+		<Action sr="act17" ve="7">
+			<code>135</code>
+			<Int sr="arg0" val="1"/>
+			<Int sr="arg1" val="1"/>
+			<Str sr="arg2" ve="3">CONFIGURE NETWORKS END</Str>
+		</Action>
+		<Action sr="act2" ve="7">
+			<code>664</code>
+			<Str sr="arg0" ve="3"/>
+			<Str sr="arg1" ve="3">wiman</Str>
+			<Str sr="arg2" ve="3">startScan
+{boolean} ()</Str>
+			<Str sr="arg3" ve="3"/>
+			<Str sr="arg4" ve="3"/>
+			<Str sr="arg5" ve="3"/>
+			<Str sr="arg6" ve="3"/>
+			<Str sr="arg7" ve="3"/>
+			<Str sr="arg8" ve="3"/>
+			<Str sr="arg9" ve="3"/>
+		</Action>
+		<Action sr="act18" ve="7">
+			<code>38</code>
+		</Action>
+		<Action sr="act19" ve="7">
+			<code>38</code>
+		</Action>
+		<Action sr="act20" ve="7">
+			<code>592</code>
+			<Str sr="arg0" ve="3">%cfg_networks_list</Str>
+			<Str sr="arg1" ve="3">,</Str>
+			<Int sr="arg2" val="1"/>
+		</Action>
+		<Action sr="act21" ve="7">
+			<code>598</code>
+			<Str sr="arg0" ve="3">%cfg_networks_list</Str>
+			<Str sr="arg1" ve="3">(?:.|\n)*?ID:\s*(.*?)\s*SSID:\s*"(.*?)"(?:.|\n)*?BSSID(?:.|\n)*?KeyMgmt:\s*(.*?)\s*Protocols(?:.|\n)*?(?=ID:|$)|^$</Str>
+			<Int sr="arg2" val="0"/>
+			<Int sr="arg3" val="0"/>
+			<Int sr="arg4" val="0"/>
+			<Str sr="arg5" ve="3"/>
+			<Int sr="arg6" val="1"/>
+			<Str sr="arg7" ve="3">{"networkId":$1,"SSID":"$2","keyMgmt":"$3"},</Str>
+		</Action>
+		<Action sr="act22" ve="7">
+			<code>598</code>
+			<Str sr="arg0" ve="3">%cfg_networks_list</Str>
+			<Str sr="arg1" ve="3">^(.*),(?:.|\s)*</Str>
+			<Int sr="arg2" val="0"/>
+			<Int sr="arg3" val="0"/>
+			<Int sr="arg4" val="0"/>
+			<Str sr="arg5" ve="3"/>
+			<Int sr="arg6" val="1"/>
+			<Str sr="arg7" ve="3">[$1]</Str>
+		</Action>
+		<Action sr="act23" ve="7">
+			<code>300</code>
+			<label>CONFIGURE NETWORKS END</label>
+		</Action>
+		<Action sr="act24" ve="7">
+			<code>355</code>
+			<Str sr="arg0" ve="3">%wifiprms</Str>
+			<Int sr="arg1" val="1"/>
+			<Str sr="arg2" ve="3">"cfgNetworks":%cfg_networks_list</Str>
+			<Int sr="arg3" val="0"/>
+		</Action>
+		<Action sr="act25" ve="7">
+			<code>664</code>
+			<Str sr="arg0" ve="3">%wifii(1)</Str>
+			<Str sr="arg1" ve="3">wiman</Str>
+			<Str sr="arg2" ve="3">getConnectionInfo
+{WifiInfo} ()</Str>
+			<Str sr="arg3" ve="3"/>
+			<Str sr="arg4" ve="3"/>
+			<Str sr="arg5" ve="3"/>
+			<Str sr="arg6" ve="3"/>
+			<Str sr="arg7" ve="3"/>
+			<Str sr="arg8" ve="3"/>
+			<Str sr="arg9" ve="3"/>
+		</Action>
+		<Action sr="act26" ve="7">
+			<code>598</code>
+			<Str sr="arg0" ve="3">%wifii(1)</Str>
+			<Str sr="arg1" ve="3">^.*?SSID:\s*(.*?),.*?Frequency:\s*(.*?)MHz.*?$</Str>
+			<Int sr="arg2" val="1"/>
+			<Int sr="arg3" val="0"/>
+			<Int sr="arg4" val="0"/>
+			<Str sr="arg5" ve="3"/>
+			<Int sr="arg6" val="1"/>
+			<Str sr="arg7" ve="3">"SSID":"$1","frequency":$2</Str>
+		</Action>
+		<Action sr="act27" ve="7">
+			<code>357</code>
+			<Str sr="arg0" ve="3">%wifii</Str>
+			<ConditionList sr="if">
+				<Condition sr="c0" ve="3">
+					<lhs>%wifii(1)</lhs>
+					<op>2</op>
+					<rhs>*-1</rhs>
+				</Condition>
+			</ConditionList>
+		</Action>
+		<Action sr="act3" ve="7">
+			<code>547</code>
+			<Str sr="arg0" ve="3">%start_time</Str>
+			<Str sr="arg1" ve="3">%TIMES</Str>
+			<Int sr="arg2" val="0"/>
+			<Int sr="arg3" val="0"/>
+			<Int sr="arg4" val="0"/>
+		</Action>
+		<Action sr="act28" ve="7">
+			<code>355</code>
+			<Str sr="arg0" ve="3">%wifiprms</Str>
+			<Int sr="arg1" val="1"/>
+			<Str sr="arg2" ve="3">"currentWiFi":{%wifii()}</Str>
+			<Int sr="arg3" val="0"/>
+		</Action>
+		<Action sr="act29" ve="7">
+			<code>547</code>
+			<Str sr="arg0" ve="3">%specified_ssids(1)</Str>
+			<Str sr="arg1" ve="3">%par1</Str>
+			<Int sr="arg2" val="0"/>
+			<Int sr="arg3" val="0"/>
+			<Int sr="arg4" val="0"/>
+			<ConditionList sr="if">
+				<Condition sr="c0" ve="3">
+					<lhs>%par1</lhs>
+					<op>3</op>
+					<rhs>\%par1</rhs>
+				</Condition>
+			</ConditionList>
+		</Action>
+		<Action sr="act30" ve="7">
+			<code>355</code>
+			<Str sr="arg0" ve="3">%wifiprms</Str>
+			<Int sr="arg1" val="1"/>
+			<Str sr="arg2" ve="3">"specifiedSSIDs":"%specified_ssids()"</Str>
+			<Int sr="arg3" val="0"/>
+		</Action>
+		<Action sr="act31" ve="7">
+			<code>547</code>
+			<Str sr="arg0" ve="3">%is_allow_connection(1)</Str>
+			<Str sr="arg1" ve="3">%par2</Str>
+			<Int sr="arg2" val="0"/>
+			<Int sr="arg3" val="0"/>
+			<Int sr="arg4" val="0"/>
+			<ConditionList sr="if">
+				<Condition sr="c0" ve="3">
+					<lhs>%par2</lhs>
+					<op>2</op>
+					<rhs>true/false</rhs>
+				</Condition>
+			</ConditionList>
+		</Action>
+		<Action sr="act32" ve="7">
+			<code>355</code>
+			<Str sr="arg0" ve="3">%wifiprms</Str>
+			<Int sr="arg1" val="1"/>
+			<Str sr="arg2" ve="3">"isAllowConnection":"%is_allow_connection()"</Str>
+			<Int sr="arg3" val="0"/>
+		</Action>
+		<Action sr="act33" ve="7">
+			<code>547</code>
+			<Str sr="arg0" ve="3">%signal_level_point(1)</Str>
+			<Str sr="arg1" ve="3">%SignalLevelPoint</Str>
+			<Int sr="arg2" val="0"/>
+			<Int sr="arg3" val="0"/>
+			<Int sr="arg4" val="0"/>
+			<ConditionList sr="if">
+				<Condition sr="c0" ve="3">
+					<lhs>%SignalLevelPoint</lhs>
+					<op>12</op>
+					<rhs></rhs>
+				</Condition>
+			</ConditionList>
+		</Action>
+		<Action sr="act34" ve="7">
+			<code>355</code>
+			<Str sr="arg0" ve="3">%wifiprms</Str>
+			<Int sr="arg1" val="1"/>
+			<Str sr="arg2" ve="3">"signalLevelPoint":"%signal_level_point()"</Str>
+			<Int sr="arg3" val="0"/>
+		</Action>
+		<Action sr="act35" ve="7">
+			<code>547</code>
+			<Str sr="arg0" ve="3">%signal_level_tolerance(1)</Str>
+			<Str sr="arg1" ve="3">%SignalLevelTolerance</Str>
+			<Int sr="arg2" val="0"/>
+			<Int sr="arg3" val="0"/>
+			<Int sr="arg4" val="0"/>
+			<ConditionList sr="if">
+				<Condition sr="c0" ve="3">
+					<lhs>%SignalLevelTolerance</lhs>
+					<op>4</op>
+					<rhs>(|[1~9])\d</rhs>
+				</Condition>
+			</ConditionList>
+		</Action>
+		<Action sr="act36" ve="7">
+			<code>355</code>
+			<Str sr="arg0" ve="3">%wifiprms</Str>
+			<Int sr="arg1" val="1"/>
+			<Str sr="arg2" ve="3">"signalLevelTolerance":"%signal_level_tolerance()"</Str>
+			<Int sr="arg3" val="0"/>
+		</Action>
+		<Action sr="act4" ve="7">
+			<code>35</code>
+			<Int sr="arg0" val="250"/>
+			<Int sr="arg1" val="0"/>
+			<Int sr="arg2" val="0"/>
+			<Int sr="arg3" val="0"/>
+			<Int sr="arg4" val="0"/>
+			<ConditionList sr="if">
+				<bool0>Or</bool0>
+				<Condition sr="c0" ve="3">
+					<lhs>%IsScanCompleted</lhs>
+					<op>2</op>
+					<rhs>true</rhs>
+				</Condition>
+				<Condition sr="c1" ve="3">
+					<lhs>%TIMES-%start_time</lhs>
+					<op>7</op>
+					<rhs>5</rhs>
+				</Condition>
+			</ConditionList>
+		</Action>
+		<Action sr="act37" ve="7">
+			<code>547</code>
+			<Str sr="arg0" ve="3">%priority_band(1)</Str>
+			<Str sr="arg1" ve="3">%PriorityBand</Str>
+			<Int sr="arg2" val="0"/>
+			<Int sr="arg3" val="0"/>
+			<Int sr="arg4" val="0"/>
+			<ConditionList sr="if">
+				<Condition sr="c0" ve="3">
+					<lhs>%PriorityBand</lhs>
+					<op>2</op>
+					<rhs>5g/2.4g</rhs>
+				</Condition>
+			</ConditionList>
+		</Action>
+		<Action sr="act38" ve="7">
+			<code>355</code>
+			<Str sr="arg0" ve="3">%wifiprms</Str>
+			<Int sr="arg1" val="1"/>
+			<Str sr="arg2" ve="3">"priorityBand":"%priority_band()"</Str>
+			<Int sr="arg3" val="0"/>
+		</Action>
+		<Action sr="act39" ve="7">
+			<code>547</code>
+			<Str sr="arg0" ve="3">%input</Str>
+			<Str sr="arg1" ve="3">{%wifiprms()}</Str>
+			<Int sr="arg2" val="0"/>
+			<Int sr="arg3" val="0"/>
+			<Int sr="arg4" val="0"/>
+		</Action>
+		<Action sr="act40" ve="7">
+			<code>129</code>
+			<se>false</se>
+			<Str sr="arg0" ve="3">var SUNG = SUNG || {};
+
+SUNG.wifi = (function() {
+  var BAND_5G_FREQUENCY_START = 4900,
+    BAND_5G_FREQUENCY_END = 5900,
+    BAND_2_4G_FREQUENCY_START = 0,
+    BAND_2_4G_FREQUENCY_END = 4900,
+    BAND_NAME_2_4G = '2.4G',
+    BAND_NAME_5G = '5G',
+    Constr = SUNG.wifi,
+    newInstance = function(props) {
+      verify(props);
+      return new Constr(initialize(props));
+    },
+    verify = function(props) {
+      var arr = [
+          [props.scanResults, 'scan results', 'Please check whether the WiFi scan function is on'],
+          [props.cfgNetworks, 'configured networks', 'WiFi is disable or no WiFi network has been saved before'],
+        ],
+        i;
+      for (i in arr) {
+        if (!Array.isArray(arr[i][0])) {
+          throw new Error(`The argument of the WiFi ${arr[i][1]} is not an array`);
+        }
+        var len = arr[i][0].length;
+        if (len === 0) {
+          throw new Error(`The list of the WiFi ${arr[i][1]} is empty. ${arr[i][2]}`);
+        }
+      }
+    },
+    initialize = function(props) {
+      props.scanResults.sort(function(a, b) {
+        return b.level - a.level;
+      });
+
+      updateCfgNetworks(props.cfgNetworks);
+      props.currentWiFi = initializeCurrentWiFi(props.currentWiFi);
+      props.specifiedSSIDs = initializeSpecifiedSSIDs(props.specifiedSSIDs);
+      props.isAllowConnection = initializeIsAllowConnection(props.isAllowConnection, props.specifiedSSIDs);
+      props.signalLevelPoint = initializeSignalLevelPoint(props.signalLevelPoint);
+      props.signalLevelTolerance = initializeSignalLevelTolerance(props.signalLevelTolerance);
+      props.priorityBand = initializePriorityBand(props.priorityBand);
+
+      return props;
+    },
+    updateCfgNetworks = function(cfgNetworks) {
+      if (needUpdate(cfgNetworks)) {
+        tk.setGlobal('CfgNetworksList', JSON.stringify(cfgNetworks));
+      }
+    },
+    needUpdate = function(cfgNetworks) {
+      var prevCfgNetworks, len, i, key;
+
+      try {
+        prevCfgNetworks = JSON.parse(tk.global('CfgNetworksList'));
+      } catch (e) {
+        return true;
+      }
+
+      len = prevCfgNetworks.length;
+
+      if (cfgNetworks.length !== len) {
+        return true;
+      }
+
+      cfgNetworks = sortCfgNetworks(cfgNetworks);
+      prevCfgNetworks = sortCfgNetworks(prevCfgNetworks);
+
+      for (i = 0; i &lt; len; i += 1) {
+        for (key in cfgNetworks[i]) {
+          if (cfgNetworks[i][key] !== prevCfgNetworks[i][key]) {
+            return true;
+          }
+        }
+      }
+      return false;
+    },
+    sortCfgNetworks = function(cfgNetworks) {
+      cfgNetworks.sort(function(a, b) {
+        return a.networkId - b.networkId;
+      });
+      return cfgNetworks;
+    },
+    initializeCurrentWiFi = function(currentWiFi) {
+      return currentWiFi === undefined ? {} : currentWiFi;
+    },
+    initializeSpecifiedSSIDs = function(specifiedSSIDs) {
+      if (specifiedSSIDs) {
+        specifiedSSIDs = specifiedSSIDs.toString().replace(/\s/g, '').replace(/^,+|,+$/g, '');
+        return specifiedSSIDs === '' ? null : specifiedSSIDs.split(',');
+      }
+      return null;
+    },
+    initializeIsAllowConnection = function(isAllowConnection, specifiedSSIDs) {
+      if (specifiedSSIDs !== null &amp;&amp; isAllowConnection) {
+        isAllowConnection = isAllowConnection.trim().match(/^true|false$/i);
+        return isAllowConnection ? (/^true$/i).test(isAllowConnection[0]) : null;
+      }
+      return null;
+    },
+    initializeSignalLevelPoint = function(level) {
+      var SIGNAL_LEVEL_MAX = 120;
+      if (level === undefined) {
+        return 0 - SIGNAL_LEVEL_MAX;
+      }
+      level = level.toString().trim();
+      level = (level === '' || isNaN(level) === true) ?
+        SIGNAL_LEVEL_MAX : parseInt(Math.abs(level), 10)
+      return 0 - (level &gt; SIGNAL_LEVEL_MAX ? SIGNAL_LEVEL_MAX : level);
+    },
+    initializeSignalLevelTolerance = function(val) {
+      if (!val) { return 0; }
+      val = val.toString().trim();
+      return /^([1-9]\d*|0)$/i.test(val) ? parseInt(val) : 0;
+    },
+    initializePriorityBand = function(val) {
+      if (val === undefined) { return null; }
+      return val.trim().match(/^(5|2\.4)g$/i) ? val.toUpperCase() : null;
+    },
+    getNetworkIds = function() {
+      var networks = this.getConnectableNetworks(),
+        arr = [],
+        i, len;
+      if (networks === null) { return ''; }
+
+      for (i = 0, len = networks.length; i &lt; len; i += 1) {
+        arr.push(networks[i].networkId);
+      }
+      return arr.length === 0 ? null : Array.from(new Set(arr));
+    },
+    getConnectableNetworks = function() {
+      var arr = [],
+        i, networks,
+        scanResults = getStrongSignalScanResults(this.scanResults, this.signalLevelPoint);
+      scanResults = getPriorityBandScanResults(scanResults, this.priorityBand);
+      scanResults = getSpecifiedSSIDsScanResults(scanResults, this.isAllowConnection, this.specifiedSSIDs);
+      for (i in scanResults) {
+        networks = getNetwork(this.cfgNetworks, scanResults[i]);
+        if (networks !== null) {
+          arr = arr.concat(networks);
+        }
+      }
+
+      return arr.length === 0 ? null : getSignalLevelToleranceNetworks(arr, this.signalLevelTolerance, this.currentWiFi);
+    },
+    getStrongSignalScanResults = function(scanResults, level) {
+      var arr = [],
+        i, sr;
+      for (i in scanResults) {
+        sr = scanResults[i];
+        if (sr.level &gt;= level) {
+          arr.push(sr);
+        }
+      }
+      return arr;
+    },
+    getPriorityBandScanResults = function(scanResults, priorityBand) {
+      if (priorityBand !== BAND_NAME_5G &amp;&amp; priorityBand !== BAND_NAME_2_4G) {
+        return scanResults;
+      }
+
+      var is5GPriority = priorityBand === BAND_NAME_5G,
+        freq_start = is5GPriority ? BAND_5G_FREQUENCY_START : BAND_2_4G_FREQUENCY_START,
+        freq_end = is5GPriority ? BAND_5G_FREQUENCY_END : BAND_2_4G_FREQUENCY_END,
+        arr1 = [],
+        arr2 = [],
+        i, sr;
+      for (i in scanResults) {
+        sr = scanResults[i];
+        sr.frequency &gt; freq_start &amp;&amp; sr.frequency &lt;= freq_end ? arr1.push(sr) : arr2.push(sr);
+      }
+
+      return arr1.concat(arr2);
+    },
+    getSpecifiedSSIDsScanResults = function(scanResults, isAllowConnection, specifiedSSIDs) {
+      if (isAllowConnection === null || specifiedSSIDs === null) {
+        return scanResults;
+      }
+
+      var regex = new RegExp('^(' + specifiedSSIDs.join('|') + ')$'),
+        arr = [],
+        i, sr;
+
+      for (i in scanResults) {
+        if (regex.test(scanResults[i].SSID) === isAllowConnection) {
+          arr.push(scanResults[i]);
+        }
+      }
+      return arr.length === 0 ? null : arr;
+    },
+    getNetwork = function(cfgNetworks, scanResult) {
+      var arr = [],
+        i, cfgNetwork;
+      for (i in cfgNetworks) {
+        cfgNetwork = cfgNetworks[i];
+        if (scanResult.SSID === cfgNetwork.SSID &amp;&amp; isSamePasswordType(scanResult, cfgNetwork)) {
+          arr.push({
+            networkId: cfgNetwork.networkId,
+            SSID: cfgNetwork.SSID,
+            level: scanResult.level,
+            frequency: scanResult.frequency
+          });
+        }
+      }
+      return arr.length === 0 ? null : arr;
+    },
+    isSamePasswordType = function(scanResult, cfgNetwork) {
+      return hasPassword(scanResult.capabilities) === hasPassword(cfgNetwork.keyMgmt);
+    },
+    hasPassword = function(key) {
+      return (/psk/i).test(key);
+    },
+    getSignalLevelToleranceNetworks = function(networks, signalLevelTolerance, currentWiFi) {
+      var currentNetworkIndex, tmp,
+        currentSSID = currentWiFi.SSID;
+      if (currentSSID === networks[0].SSID || networks.length &lt; 2 ||
+        signalLevelTolerance === 0 || !isSimilarBand(currentWiFi.frequency, networks[0].frequency) ||
+        (currentNetworkIndex = getNetworkIndex(networks, currentSSID)) === -1) {
+        return networks;
+      }
+
+      if (Math.abs(networks[0].level - networks[currentNetworkIndex].level) &lt; signalLevelTolerance) {
+        tmp = networks[0];
+        networks[0] = networks[currentNetworkIndex];
+        networks[currentNetworkIndex] = tmp;
+      }
+
+      return networks;
+    },
+    isSimilarBand = function(freqA, freqB) {
+      var freq_point = BAND_5G_FREQUENCY_START;
+      return (freqA &gt; freq_point &amp;&amp; freqB &gt; freq_point) || (freqA &lt;= freq_point &amp;&amp; freqB &lt;= freq_point);
+    },
+    getNetworkIndex = function(networks, ssid) {
+      for (var i in networks) {
+        if (networks[i].SSID === ssid) {
+          return i
+        }
+      }
+      return -1
+    };
+
+  Constr = function(props) {
+    var keys = [
+        'scanResults',
+        'cfgNetworks',
+        'currentWiFi',
+        'specifiedSSIDs',
+        'isAllowConnection',
+        'signalLevelPoint',
+        'signalLevelTolerance',
+        'priorityBand',
+      ],
+      len = keys.length,
+      i;
+    for (i = 0; i &lt; len; i++) {
+      var key = keys[i];
+      this[key] = props[key];
+    }
+  };
+
+  Constr.prototype = {
+    constructor: Constr,
+    getConnectableNetworks: getConnectableNetworks,
+    getNetworkIds: getNetworkIds,
+  };
+
+  Constr.newInstance = newInstance;
+  return Constr;
+}());
+
+
+(function() {
+  try {
+    var wifi = SUNG.wifi.newInstance(JSON.parse(input)),
+      networkIds = wifi.getNetworkIds();
+    tk.setLocal('output', networkIds.toString());
+  } catch (e) {
+    tk.setLocal('err', 1);
+    tk.setLocal('errmsg', e.message);
+  }
+}());</Str>
+			<Str sr="arg1" ve="3"/>
+			<Int sr="arg2" val="1"/>
+			<Int sr="arg3" val="45"/>
+		</Action>
+		<Action sr="act41" ve="7">
+			<code>130</code>
+			<label>Err</label>
+			<Str sr="arg0" ve="3">*stopTasksBecauseError</Str>
+			<Int sr="arg1">
+				<var>%priority</var>
+			</Int>
+			<Str sr="arg2" ve="3">%errmsg</Str>
+			<Str sr="arg3" ve="3">0</Str>
+			<Str sr="arg4" ve="3"/>
+			<Int sr="arg5" val="0"/>
+			<ConditionList sr="if">
+				<Condition sr="c0" ve="3">
+					<lhs>%err</lhs>
+					<op>12</op>
+					<rhs></rhs>
+				</Condition>
+			</ConditionList>
+		</Action>
+		<Action sr="act42" ve="7">
+			<code>126</code>
+			<Str sr="arg0" ve="3">%output</Str>
+			<Int sr="arg1" val="1"/>
+			<ConditionList sr="if">
+				<Condition sr="c0" ve="3">
+					<lhs>%output</lhs>
+					<op>3</op>
+					<rhs>\%output</rhs>
+				</Condition>
+			</ConditionList>
+		</Action>
+		<Action sr="act5" ve="7">
+			<code>664</code>
+			<Str sr="arg0" ve="3">%scan_results_list</Str>
+			<Str sr="arg1" ve="3">wiman</Str>
+			<Str sr="arg2" ve="3">getScanResults
+{List} ()</Str>
+			<Str sr="arg3" ve="3"/>
+			<Str sr="arg4" ve="3"/>
+			<Str sr="arg5" ve="3"/>
+			<Str sr="arg6" ve="3"/>
+			<Str sr="arg7" ve="3"/>
+			<Str sr="arg8" ve="3"/>
+			<Str sr="arg9" ve="3"/>
+		</Action>
+		<Action sr="act6" ve="7">
+			<code>130</code>
+			<Str sr="arg0" ve="3">requestScanAlwaysAvailable</Str>
+			<Int sr="arg1">
+				<var>%priority</var>
+			</Int>
+			<Str sr="arg2" ve="3"/>
+			<Str sr="arg3" ve="3"/>
+			<Str sr="arg4" ve="3"/>
+			<Int sr="arg5" val="0"/>
+			<ConditionList sr="if">
+				<Condition sr="c0" ve="3">
+					<lhs>%scan_results_list(#)</lhs>
+					<op>8</op>
+					<rhs>0</rhs>
+				</Condition>
+			</ConditionList>
+		</Action>
+		<Action sr="act7" ve="7">
+			<code>592</code>
+			<Str sr="arg0" ve="3">%scan_results_list</Str>
+			<Str sr="arg1" ve="3">,</Str>
+			<Int sr="arg2" val="1"/>
+		</Action>
+		<Action sr="act8" ve="7">
+			<code>598</code>
+			<Str sr="arg0" ve="3">%scan_results_list</Str>
+			<Str sr="arg1" ve="3">SSID:\s*(.*?),.*?capabilities:\s*(.*?),.*?level:\s*(.*?),.*?frequency:\s*(.*?),.*?(?=SSID|$)</Str>
+			<Int sr="arg2" val="0"/>
+			<Int sr="arg3" val="0"/>
+			<Int sr="arg4" val="0"/>
+			<Str sr="arg5" ve="3"/>
+			<Int sr="arg6" val="1"/>
+			<Str sr="arg7" ve="3">{"SSID":"$1","capabilities":"$2","level":$3,"frequency":$4},</Str>
+		</Action>
+	</Task>
+	<Task sr="task186">
+		<id>186</id>
+		<pri>6</pri>
+		<Action sr="act0" ve="7">
+			<code>130</code>
+			<Str sr="arg0" ve="3">*switchWiFi</Str>
+			<Int sr="arg1">
+				<var>%priority</var>
+			</Int>
+			<Str sr="arg2" ve="3"/>
+			<Str sr="arg3" ve="3"/>
+			<Str sr="arg4" ve="3"/>
+			<Int sr="arg5" val="0"/>
+		</Action>
+	</Task>
+	<Task sr="task206">
+		<id>206</id>
+		<pri>6</pri>
+		<Action sr="act0" ve="7">
+			<code>130</code>
+			<Str sr="arg0" ve="3">*switchWiFi</Str>
+			<Int sr="arg1">
+				<var>%priority</var>
+			</Int>
+			<Str sr="arg2" ve="3"/>
+			<Str sr="arg3" ve="3"/>
+			<Str sr="arg4" ve="3"/>
+			<Int sr="arg5" val="0"/>
+		</Action>
+	</Task>
+	<Task sr="task209">
+		<id>209</id>
+		<pri>6</pri>
+		<Action sr="act0" ve="7">
+			<code>547</code>
+			<Str sr="arg0" ve="3">%IsScanCompleted</Str>
+			<Str sr="arg1" ve="3">true</Str>
+			<Int sr="arg2" val="0"/>
+			<Int sr="arg3" val="0"/>
+			<Int sr="arg4" val="0"/>
+		</Action>
+	</Task>
+	<Task sr="task212">
+		<id>212</id>
+		<nme>requestScanAlwaysAvailable</nme>
+		<pri>100</pri>
+		<Action sr="act0" ve="7">
+			<code>135</code>
+			<Int sr="arg0" val="1"/>
+			<Int sr="arg1" val="1"/>
+			<Str sr="arg2" ve="3">Exception</Str>
+			<ConditionList sr="if">
+				<Condition sr="c0" ve="3">
+					<lhs>%IsScanRequestPopup</lhs>
+					<op>2</op>
+					<rhs>true</rhs>
+				</Condition>
+			</ConditionList>
+		</Action>
+		<Action sr="act1" ve="7">
+			<code>664</code>
+			<Str sr="arg0" ve="3">(WifiManager) wiman</Str>
+			<Str sr="arg1" ve="3">CONTEXT</Str>
+			<Str sr="arg2" ve="3">getSystemService
+{Object} (String)</Str>
+			<Str sr="arg3" ve="3">wifi</Str>
+			<Str sr="arg4" ve="3"/>
+			<Str sr="arg5" ve="3"/>
+			<Str sr="arg6" ve="3"/>
+			<Str sr="arg7" ve="3"/>
+			<Str sr="arg8" ve="3"/>
+			<Str sr="arg9" ve="3"/>
+		</Action>
+		<Action sr="act2" ve="7">
+			<code>664</code>
+			<Str sr="arg0" ve="3">%is_scan_always_available</Str>
+			<Str sr="arg1" ve="3">wiman</Str>
+			<Str sr="arg2" ve="3">isScanAlwaysAvailable
+{boolean} ()</Str>
+			<Str sr="arg3" ve="3"/>
+			<Str sr="arg4" ve="3"/>
+			<Str sr="arg5" ve="3"/>
+			<Str sr="arg6" ve="3"/>
+			<Str sr="arg7" ve="3"/>
+			<Str sr="arg8" ve="3"/>
+			<Str sr="arg9" ve="3"/>
+		</Action>
+		<Action sr="act3" ve="7">
+			<code>877</code>
+			<se>false</se>
+			<Str sr="arg0" ve="3">android.net.wifi.action.REQUEST_SCAN_ALWAYS_AVAILABLE</Str>
+			<Int sr="arg1" val="0"/>
+			<Str sr="arg2" ve="3"/>
+			<Str sr="arg3" ve="3"/>
+			<Str sr="arg4" ve="3"/>
+			<Str sr="arg5" ve="3"/>
+			<Str sr="arg6" ve="3"/>
+			<Str sr="arg7" ve="3"/>
+			<Str sr="arg8" ve="3"/>
+			<Int sr="arg9" val="1"/>
+			<ConditionList sr="if">
+				<Condition sr="c0" ve="3">
+					<lhs>%is_scan_always_available</lhs>
+					<op>2</op>
+					<rhs>false</rhs>
+				</Condition>
+			</ConditionList>
+		</Action>
+		<Action sr="act4" ve="7">
+			<code>547</code>
+			<Str sr="arg0" ve="3">%IsScanRequestPopup</Str>
+			<Str sr="arg1" ve="3">true</Str>
+			<Int sr="arg2" val="0"/>
+			<Int sr="arg3" val="0"/>
+			<Int sr="arg4" val="0"/>
+		</Action>
+		<Action sr="act5" ve="7">
+			<code>130</code>
+			<label>Exception</label>
+			<Str sr="arg0" ve="3">*stopTasksBecauseException</Str>
+			<Int sr="arg1">
+				<var>%priority</var>
+			</Int>
+			<Str sr="arg2" ve="3">The list of the WiFi scan results is empty. Please check whether the WiFi scan function is on</Str>
+			<Str sr="arg3" ve="3">0</Str>
+			<Str sr="arg4" ve="3"/>
+			<Int sr="arg5" val="0"/>
+		</Action>
+	</Task>
+	<Task sr="task214">
+		<id>214</id>
+		<nme>*switchWiFi</nme>
+		<pri>100</pri>
+		<Action sr="act0" ve="7">
+			<code>130</code>
+			<Str sr="arg0" ve="3">stopWiFiSwitchingWhenDownloadingOrUploading</Str>
+			<Int sr="arg1">
+				<var>%priority</var>
+			</Int>
+			<Str sr="arg2" ve="3"/>
+			<Str sr="arg3" ve="3"/>
+			<Str sr="arg4" ve="3"/>
+			<Int sr="arg5" val="0"/>
+		</Action>
+		<Action sr="act1" ve="7">
+			<code>130</code>
+			<Str sr="arg0" ve="3">*$getConnectableWiFi</Str>
+			<Int sr="arg1">
+				<var>%priority</var>
+			</Int>
+			<Str sr="arg2" ve="3">%par1</Str>
+			<Str sr="arg3" ve="3">%par2</Str>
+			<Str sr="arg4" ve="3">%networkids</Str>
+			<Int sr="arg5" val="0"/>
+		</Action>
+		<Action sr="act10" ve="7">
+			<code>547</code>
+			<Str sr="arg0" ve="3">%size</Str>
+			<Str sr="arg1" ve="3">%networkids(#)</Str>
+			<Int sr="arg2" val="0"/>
+			<Int sr="arg3" val="0"/>
+			<Int sr="arg4" val="0"/>
+		</Action>
+		<Action sr="act11" ve="7">
+			<code>39</code>
+			<Str sr="arg0" ve="3">%index</Str>
+			<Str sr="arg1" ve="3">1:%size</Str>
+		</Action>
+		<Action sr="act12" ve="7">
+			<code>664</code>
+			<Str sr="arg0" ve="3"/>
+			<Str sr="arg1" ve="3">wiman</Str>
+			<Str sr="arg2" ve="3">enableNetwork
+{boolean} (int, boolean)</Str>
+			<Str sr="arg3" ve="3">%networkids(%index)</Str>
+			<Str sr="arg4" ve="3">true</Str>
+			<Str sr="arg5" ve="3"/>
+			<Str sr="arg6" ve="3"/>
+			<Str sr="arg7" ve="3"/>
+			<Str sr="arg8" ve="3"/>
+			<Str sr="arg9" ve="3"/>
+		</Action>
+		<Action sr="act13" ve="7">
+			<code>547</code>
+			<Str sr="arg0" ve="3">%start_time</Str>
+			<Str sr="arg1" ve="3">%TIMES</Str>
+			<Int sr="arg2" val="0"/>
+			<Int sr="arg3" val="0"/>
+			<Int sr="arg4" val="0"/>
+		</Action>
+		<Action sr="act14" ve="7">
+			<code>35</code>
+			<Int sr="arg0" val="0"/>
+			<Int sr="arg1" val="1"/>
+			<Int sr="arg2" val="0"/>
+			<Int sr="arg3" val="0"/>
+			<Int sr="arg4" val="0"/>
+			<ConditionList sr="if">
+				<bool0>Or</bool0>
+				<Condition sr="c0" ve="3">
+					<lhs>%WIFII</lhs>
+					<op>2</op>
+					<rhs>%wifi_connected_flag</rhs>
+				</Condition>
+				<Condition sr="c1" ve="3">
+					<lhs>%TIMES-%start_time</lhs>
+					<op>7</op>
+					<rhs>15</rhs>
+				</Condition>
+			</ConditionList>
+		</Action>
+		<Action sr="act15" ve="7">
+			<code>37</code>
+			<ConditionList sr="if">
+				<Condition sr="c0" ve="3">
+					<lhs>%WIFII</lhs>
+					<op>2</op>
+					<rhs>%wifi_connected_flag</rhs>
+				</Condition>
+			</ConditionList>
+		</Action>
+		<Action sr="act16" ve="7">
+			<code>548</code>
+			<Str sr="arg0" ve="3">Switching WiFi successfully</Str>
+			<Int sr="arg1" val="0"/>
+		</Action>
+		<Action sr="act17" ve="7">
+			<code>135</code>
+			<Int sr="arg0" val="1"/>
+			<Int sr="arg1" val="1"/>
+			<Str sr="arg2" ve="3">end</Str>
+		</Action>
+		<Action sr="act18" ve="7">
+			<code>38</code>
+		</Action>
+		<Action sr="act19" ve="7">
+			<code>40</code>
+		</Action>
+		<Action sr="act2" ve="7">
+			<code>37</code>
+			<ConditionList sr="if">
+				<Condition sr="c0" ve="3">
+					<lhs>%networkids</lhs>
+					<op>3</op>
+					<rhs>\%networkids</rhs>
+				</Condition>
+			</ConditionList>
+		</Action>
+		<Action sr="act20" ve="7">
+			<code>548</code>
+			<Str sr="arg0" ve="3">No available WiFi connections</Str>
+			<Int sr="arg1" val="0"/>
+		</Action>
+		<Action sr="act21" ve="7">
+			<code>38</code>
+		</Action>
+		<Action sr="act22" ve="7">
+			<code>300</code>
+			<label>end</label>
+		</Action>
+		<Action sr="act3" ve="7">
+			<code>664</code>
+			<Str sr="arg0" ve="3">(WifiManager) wiman</Str>
+			<Str sr="arg1" ve="3">CONTEXT</Str>
+			<Str sr="arg2" ve="3">getSystemService
+{Object} (String)</Str>
+			<Str sr="arg3" ve="3">wifi</Str>
+			<Str sr="arg4" ve="3"/>
+			<Str sr="arg5" ve="3"/>
+			<Str sr="arg6" ve="3"/>
+			<Str sr="arg7" ve="3"/>
+			<Str sr="arg8" ve="3"/>
+			<Str sr="arg9" ve="3"/>
+		</Action>
+		<Action sr="act4" ve="7">
+			<code>664</code>
+			<Str sr="arg0" ve="3">(WifiInfo) wifii</Str>
+			<Str sr="arg1" ve="3">wiman</Str>
+			<Str sr="arg2" ve="3">getConnectionInfo
+{WifiInfo} ()</Str>
+			<Str sr="arg3" ve="3">wifi</Str>
+			<Str sr="arg4" ve="3"/>
+			<Str sr="arg5" ve="3"/>
+			<Str sr="arg6" ve="3"/>
+			<Str sr="arg7" ve="3"/>
+			<Str sr="arg8" ve="3"/>
+			<Str sr="arg9" ve="3"/>
+		</Action>
+		<Action sr="act5" ve="7">
+			<code>664</code>
+			<Str sr="arg0" ve="3">%current_networkid</Str>
+			<Str sr="arg1" ve="3">wifii</Str>
+			<Str sr="arg2" ve="3">getNetworkId
+{int} ()</Str>
+			<Str sr="arg3" ve="3">wifi</Str>
+			<Str sr="arg4" ve="3"/>
+			<Str sr="arg5" ve="3"/>
+			<Str sr="arg6" ve="3"/>
+			<Str sr="arg7" ve="3"/>
+			<Str sr="arg8" ve="3"/>
+			<Str sr="arg9" ve="3"/>
+		</Action>
+		<Action sr="act6" ve="7">
+			<code>590</code>
+			<Str sr="arg0" ve="3">%networkids</Str>
+			<Str sr="arg1" ve="3">,</Str>
+			<Int sr="arg2" val="0"/>
+		</Action>
+		<Action sr="act7" ve="7">
+			<code>135</code>
+			<Int sr="arg0" val="1"/>
+			<Int sr="arg1" val="1"/>
+			<Str sr="arg2" ve="3">end</Str>
+			<ConditionList sr="if">
+				<Condition sr="c0" ve="3">
+					<lhs>%current_networkid</lhs>
+					<op>8</op>
+					<rhs>%networkids(1)</rhs>
+				</Condition>
+			</ConditionList>
+		</Action>
+		<Action sr="act8" ve="7">
+			<code>425</code>
+			<Int sr="arg0" val="1"/>
+			<ConditionList sr="if">
+				<Condition sr="c0" ve="3">
+					<lhs>%WIFI</lhs>
+					<op>2</op>
+					<rhs>off</rhs>
+				</Condition>
+			</ConditionList>
+		</Action>
+		<Action sr="act9" ve="7">
+			<code>547</code>
+			<Str sr="arg0" ve="3">%wifi_connected_flag</Str>
+			<Str sr="arg1" ve="3">*&gt;&gt;&gt; connection &lt;&lt;&lt;*</Str>
+			<Int sr="arg2" val="0"/>
+			<Int sr="arg3" val="0"/>
+			<Int sr="arg4" val="0"/>
+		</Action>
+	</Task>
+</TaskerData>

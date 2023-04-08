@@ -1,0 +1,1015 @@
+<TaskerData sr="" dvi="1" tv="5.6">
+	<Project sr="proj0" ve="2">
+		<name>Overscan</name>
+		<tids>2430,2433,2434,2461,2462</tids>
+	</Project>
+	<Task sr="task2430">
+		<id>2430</id>
+		<nme>setOverscanSettingMode</nme>
+		<pri>100</pri>
+		<rty>1</rty>
+		<Action sr="act0" ve="7">
+			<code>664</code>
+			<Str sr="arg0" ve="3">result</Str>
+			<Str sr="arg1" ve="3">CONTEXT</Str>
+			<Str sr="arg2" ve="3">checkCallingOrSelfPermission
+{int} (String)</Str>
+			<Str sr="arg3" ve="3">"android.permission.WRITE_SECURE_SETTINGS"</Str>
+			<Str sr="arg4" ve="3"/>
+			<Str sr="arg5" ve="3"/>
+			<Str sr="arg6" ve="3"/>
+			<Str sr="arg7" ve="3"/>
+			<Str sr="arg8" ve="3"/>
+			<Str sr="arg9" ve="3"/>
+		</Action>
+		<Action sr="act1" ve="7">
+			<code>37</code>
+			<ConditionList sr="if">
+				<Condition sr="c0" ve="3">
+					<lhs>result</lhs>
+					<op>0</op>
+					<rhs>0</rhs>
+				</Condition>
+			</ConditionList>
+		</Action>
+		<Action sr="act10" ve="7">
+			<code>549</code>
+			<Str sr="arg0" ve="3">%OVERSCAN_SETTING_MODE</Str>
+			<Int sr="arg1" val="0"/>
+			<Int sr="arg2" val="0"/>
+		</Action>
+		<Action sr="act11" ve="7">
+			<code>130</code>
+			<label>Exception</label>
+			<Str sr="arg0" ve="3">*stopTasksBecauseException</Str>
+			<Int sr="arg1">
+				<var>%priority</var>
+			</Int>
+			<Str sr="arg2" ve="3">No overscan setting mode available. (Please grant WRITE_SECURE_SETTINGS permission in Tasker v5.2+)</Str>
+			<Str sr="arg3" ve="3">0</Str>
+			<Str sr="arg4" ve="3"/>
+			<Int sr="arg5" val="0"/>
+		</Action>
+		<Action sr="act2" ve="7">
+			<code>547</code>
+			<Str sr="arg0" ve="3">%mode</Str>
+			<Str sr="arg1" ve="3">1</Str>
+			<Int sr="arg2" val="0"/>
+			<Int sr="arg3" val="0"/>
+			<Int sr="arg4" val="0"/>
+		</Action>
+		<Action sr="act3" ve="7">
+			<code>43</code>
+			<ConditionList sr="if">
+				<Condition sr="c0" ve="3">
+					<lhs>%ROOT</lhs>
+					<op>0</op>
+					<rhs>yes</rhs>
+				</Condition>
+			</ConditionList>
+		</Action>
+		<Action sr="act4" ve="7">
+			<code>123</code>
+			<se>false</se>
+			<Str sr="arg0" ve="3">su</Str>
+			<Int sr="arg1" val="1"/>
+			<Int sr="arg2" val="1"/>
+			<Str sr="arg3" ve="3"/>
+			<Str sr="arg4" ve="3"/>
+			<Str sr="arg5" ve="3"/>
+		</Action>
+		<Action sr="act5" ve="7">
+			<code>547</code>
+			<Str sr="arg0" ve="3">%mode</Str>
+			<Str sr="arg1" ve="3">2</Str>
+			<Int sr="arg2" val="0"/>
+			<Int sr="arg3" val="0"/>
+			<Int sr="arg4" val="0"/>
+			<ConditionList sr="if">
+				<Condition sr="c0" ve="3">
+					<lhs>%err</lhs>
+					<op>13</op>
+					<rhs></rhs>
+				</Condition>
+			</ConditionList>
+		</Action>
+		<Action sr="act6" ve="7">
+			<code>38</code>
+		</Action>
+		<Action sr="act7" ve="7">
+			<code>37</code>
+			<ConditionList sr="if">
+				<Condition sr="c0" ve="3">
+					<lhs>%mode</lhs>
+					<op>12</op>
+					<rhs></rhs>
+				</Condition>
+			</ConditionList>
+		</Action>
+		<Action sr="act8" ve="7">
+			<code>547</code>
+			<Str sr="arg0" ve="3">%OVERSCAN_SETTING_MODE</Str>
+			<Str sr="arg1" ve="3">%mode</Str>
+			<Int sr="arg2" val="0"/>
+			<Int sr="arg3" val="0"/>
+			<Int sr="arg4" val="0"/>
+		</Action>
+		<Action sr="act9" ve="7">
+			<code>43</code>
+		</Action>
+	</Task>
+	<Task sr="task2433">
+		<id>2433</id>
+		<nme>$getOverscan</nme>
+		<pri>100</pri>
+		<rty>1</rty>
+		<Action sr="act0" ve="7">
+			<code>664</code>
+			<Str sr="arg0" ve="3">rect</Str>
+			<Str sr="arg1" ve="3">Rect</Str>
+			<Str sr="arg2" ve="3">new
+{Rect} (int, int, int, int)</Str>
+			<Str sr="arg3" ve="3">0</Str>
+			<Str sr="arg4" ve="3">0</Str>
+			<Str sr="arg5" ve="3">0</Str>
+			<Str sr="arg6" ve="3">0</Str>
+			<Str sr="arg7" ve="3"/>
+			<Str sr="arg8" ve="3"/>
+			<Str sr="arg9" ve="3"/>
+		</Action>
+		<Action sr="act1" ve="7">
+			<code>664</code>
+			<Str sr="arg0" ve="3">wm</Str>
+			<Str sr="arg1" ve="3">CONTEXT</Str>
+			<Str sr="arg2" ve="3">getSystemService
+{WindowManager} (String)</Str>
+			<Str sr="arg3" ve="3">"window"</Str>
+			<Str sr="arg4" ve="3"/>
+			<Str sr="arg5" ve="3"/>
+			<Str sr="arg6" ve="3"/>
+			<Str sr="arg7" ve="3"/>
+			<Str sr="arg8" ve="3"/>
+			<Str sr="arg9" ve="3"/>
+		</Action>
+		<Action sr="act2" ve="7">
+			<code>664</code>
+			<Str sr="arg0" ve="3">display</Str>
+			<Str sr="arg1" ve="3">wm</Str>
+			<Str sr="arg2" ve="3">getDefaultDisplay
+{Display} ()</Str>
+			<Str sr="arg3" ve="3"/>
+			<Str sr="arg4" ve="3"/>
+			<Str sr="arg5" ve="3"/>
+			<Str sr="arg6" ve="3"/>
+			<Str sr="arg7" ve="3"/>
+			<Str sr="arg8" ve="3"/>
+			<Str sr="arg9" ve="3"/>
+		</Action>
+		<Action sr="act3" ve="7">
+			<code>664</code>
+			<Str sr="arg0" ve="3"/>
+			<Str sr="arg1" ve="3">display</Str>
+			<Str sr="arg2" ve="3">getOverscanInsets
+{} (Rect)</Str>
+			<Str sr="arg3" ve="3">rect</Str>
+			<Str sr="arg4" ve="3"/>
+			<Str sr="arg5" ve="3"/>
+			<Str sr="arg6" ve="3"/>
+			<Str sr="arg7" ve="3"/>
+			<Str sr="arg8" ve="3"/>
+			<Str sr="arg9" ve="3"/>
+		</Action>
+		<Action sr="act4" ve="7">
+			<code>664</code>
+			<Str sr="arg0" ve="3">%rect</Str>
+			<Str sr="arg1" ve="3">rect</Str>
+			<Str sr="arg2" ve="3">flattenToString
+{String} ()</Str>
+			<Str sr="arg3" ve="3"/>
+			<Str sr="arg4" ve="3"/>
+			<Str sr="arg5" ve="3"/>
+			<Str sr="arg6" ve="3"/>
+			<Str sr="arg7" ve="3"/>
+			<Str sr="arg8" ve="3"/>
+			<Str sr="arg9" ve="3"/>
+		</Action>
+		<Action sr="act5" ve="7">
+			<code>590</code>
+			<Str sr="arg0" ve="3">%rect</Str>
+			<Str sr="arg1" ve="3"/>
+			<Int sr="arg2" val="0"/>
+		</Action>
+		<Action sr="act6" ve="7">
+			<code>126</code>
+			<Str sr="arg0" ve="3">%rect()</Str>
+			<Int sr="arg1" val="1"/>
+		</Action>
+	</Task>
+	<Task sr="task2434">
+		<id>2434</id>
+		<nme>*$setOverscan@2</nme>
+		<pri>100</pri>
+		<rty>1</rty>
+		<Action sr="act0" ve="7">
+			<code>130</code>
+			<label>Exception</label>
+			<Str sr="arg0" ve="3">*stopTasksBecauseInvaildParameter</Str>
+			<Int sr="arg1">
+				<var>%priority</var>
+			</Int>
+			<Str sr="arg2" ve="3">Overscan arguments, e.g. 0,0,0,-126</Str>
+			<Str sr="arg3" ve="3"/>
+			<Str sr="arg4" ve="3"/>
+			<Int sr="arg5" val="0"/>
+			<ConditionList sr="if">
+				<Condition sr="c0" ve="3">
+					<lhs>%par1</lhs>
+					<op>13</op>
+					<rhs>on/off/toggle</rhs>
+				</Condition>
+			</ConditionList>
+		</Action>
+		<Action sr="act1" ve="7">
+			<code>590</code>
+			<Str sr="arg0" ve="3">%par1</Str>
+			<Str sr="arg1" ve="3">,</Str>
+			<Int sr="arg2" val="0"/>
+		</Action>
+		<Action sr="act2" ve="7">
+			<code>130</code>
+			<label>Exception</label>
+			<Str sr="arg0" ve="3">*stopTasksBecauseException</Str>
+			<Int sr="arg1">
+				<var>%priority</var>
+			</Int>
+			<Str sr="arg2" ve="3">The number of overscan arguments must be 4</Str>
+			<Str sr="arg3" ve="3">0</Str>
+			<Str sr="arg4" ve="3"/>
+			<Int sr="arg5" val="0"/>
+			<ConditionList sr="if">
+				<Condition sr="c0" ve="3">
+					<lhs>%par1(#)</lhs>
+					<op>1</op>
+					<rhs>4</rhs>
+				</Condition>
+			</ConditionList>
+		</Action>
+		<Action sr="act3" ve="7">
+			<code>39</code>
+			<Str sr="arg0" ve="3">%index</Str>
+			<Str sr="arg1" ve="3">1:4</Str>
+		</Action>
+		<Action sr="act4" ve="7">
+			<code>664</code>
+			<se>false</se>
+			<Str sr="arg0" ve="3"/>
+			<Str sr="arg1" ve="3">Integer</Str>
+			<Str sr="arg2" ve="3">valueOf
+{Integer} (int)</Str>
+			<Str sr="arg3" ve="3">%par1(%index)</Str>
+			<Str sr="arg4" ve="3"/>
+			<Str sr="arg5" ve="3"/>
+			<Str sr="arg6" ve="3"/>
+			<Str sr="arg7" ve="3"/>
+			<Str sr="arg8" ve="3"/>
+			<Str sr="arg9" ve="3"/>
+		</Action>
+		<Action sr="act5" ve="7">
+			<code>130</code>
+			<label>Exception</label>
+			<Str sr="arg0" ve="3">*stopTasksBecauseException</Str>
+			<Int sr="arg1">
+				<var>%priority</var>
+			</Int>
+			<Str sr="arg2" ve="3">Argument %index (%par1(%index)) is illegal</Str>
+			<Str sr="arg3" ve="3">0</Str>
+			<Str sr="arg4" ve="3"/>
+			<Int sr="arg5" val="0"/>
+			<ConditionList sr="if">
+				<Condition sr="c0" ve="3">
+					<lhs>%err</lhs>
+					<op>12</op>
+					<rhs></rhs>
+				</Condition>
+			</ConditionList>
+		</Action>
+		<Action sr="act6" ve="7">
+			<code>40</code>
+		</Action>
+		<Action sr="act7" ve="7">
+			<code>123</code>
+			<se>false</se>
+			<Str sr="arg0" ve="3">wm overscan %par1()</Str>
+			<Int sr="arg1" val="2"/>
+			<Int sr="arg2" val="1"/>
+			<Str sr="arg3" ve="3"/>
+			<Str sr="arg4" ve="3">%errmsg</Str>
+			<Str sr="arg5" ve="3"/>
+		</Action>
+		<Action sr="act8" ve="7">
+			<code>130</code>
+			<label>Exception</label>
+			<Str sr="arg0" ve="3">*stopCurrentTaskBecauseException</Str>
+			<Int sr="arg1">
+				<var>%priority</var>
+			</Int>
+			<Str sr="arg2" ve="3">Overscan failed (%errmsg)</Str>
+			<Str sr="arg3" ve="3"/>
+			<Str sr="arg4" ve="3"/>
+			<Int sr="arg5" val="1"/>
+			<ConditionList sr="if">
+				<Condition sr="c0" ve="3">
+					<lhs>%err</lhs>
+					<op>12</op>
+					<rhs></rhs>
+				</Condition>
+			</ConditionList>
+		</Action>
+		<Action sr="act9" ve="7">
+			<code>126</code>
+			<Str sr="arg0" ve="3">true</Str>
+			<Int sr="arg1" val="1"/>
+		</Action>
+	</Task>
+	<Task sr="task2461">
+		<id>2461</id>
+		<nme>*$setOverscan@1</nme>
+		<pri>100</pri>
+		<rty>1</rty>
+		<Action sr="act0" ve="7">
+			<code>130</code>
+			<label>Exception</label>
+			<Str sr="arg0" ve="3">*stopTasksBecauseInvaildParameter</Str>
+			<Int sr="arg1">
+				<var>%priority</var>
+			</Int>
+			<Str sr="arg2" ve="3">Overscan arguments, e.g. 0,0,0,-126</Str>
+			<Str sr="arg3" ve="3"/>
+			<Str sr="arg4" ve="3"/>
+			<Int sr="arg5" val="0"/>
+			<ConditionList sr="if">
+				<Condition sr="c0" ve="3">
+					<lhs>%par1</lhs>
+					<op>13</op>
+					<rhs>on/off/toggle</rhs>
+				</Condition>
+			</ConditionList>
+		</Action>
+		<Action sr="act1" ve="7">
+			<code>590</code>
+			<Str sr="arg0" ve="3">%par1</Str>
+			<Str sr="arg1" ve="3">,</Str>
+			<Int sr="arg2" val="0"/>
+		</Action>
+		<Action sr="act10" ve="7">
+			<code>664</code>
+			<se>false</se>
+			<Str sr="arg0" ve="3">sm_cls</Str>
+			<Str sr="arg1" ve="3">Class</Str>
+			<Str sr="arg2" ve="3">forName
+{Class} (String)</Str>
+			<Str sr="arg3" ve="3">"%cls_name"</Str>
+			<Str sr="arg4" ve="3"/>
+			<Str sr="arg5" ve="3"/>
+			<Str sr="arg6" ve="3"/>
+			<Str sr="arg7" ve="3"/>
+			<Str sr="arg8" ve="3"/>
+			<Str sr="arg9" ve="3"/>
+		</Action>
+		<Action sr="act11" ve="7">
+			<code>130</code>
+			<label>Exception</label>
+			<Str sr="arg0" ve="3">*stopTasksBecauseException</Str>
+			<Int sr="arg1">
+				<var>%priority</var>
+			</Int>
+			<Str sr="arg2" ve="3">Failed to get the Class object (%cls_name)</Str>
+			<Str sr="arg3" ve="3">0</Str>
+			<Str sr="arg4" ve="3"/>
+			<Int sr="arg5" val="0"/>
+			<ConditionList sr="if">
+				<bool0>Or</bool0>
+				<Condition sr="c0" ve="3">
+					<lhs>%err</lhs>
+					<op>12</op>
+					<rhs></rhs>
+				</Condition>
+				<Condition sr="c1" ve="3">
+					<lhs>sm_cls</lhs>
+					<op>0</op>
+					<rhs>null</rhs>
+				</Condition>
+			</ConditionList>
+		</Action>
+		<Action sr="act12" ve="7">
+			<code>664</code>
+			<se>false</se>
+			<Str sr="arg0" ve="3">check_service_params_cls</Str>
+			<Str sr="arg1" ve="3">Class[]</Str>
+			<Str sr="arg2" ve="3">new
+{Class[]} (int)</Str>
+			<Str sr="arg3" ve="3">1</Str>
+			<Str sr="arg4" ve="3"/>
+			<Str sr="arg5" ve="3"/>
+			<Str sr="arg6" ve="3"/>
+			<Str sr="arg7" ve="3"/>
+			<Str sr="arg8" ve="3"/>
+			<Str sr="arg9" ve="3"/>
+		</Action>
+		<Action sr="act13" ve="7">
+			<code>664</code>
+			<se>false</se>
+			<Str sr="arg0" ve="3">check_service_params_cls[0]</Str>
+			<Str sr="arg1" ve="3">""</Str>
+			<Str sr="arg2" ve="3">getClass
+{Class} ()</Str>
+			<Str sr="arg3" ve="3"/>
+			<Str sr="arg4" ve="3"/>
+			<Str sr="arg5" ve="3"/>
+			<Str sr="arg6" ve="3"/>
+			<Str sr="arg7" ve="3"/>
+			<Str sr="arg8" ve="3"/>
+			<Str sr="arg9" ve="3"/>
+		</Action>
+		<Action sr="act14" ve="7">
+			<code>664</code>
+			<se>false</se>
+			<Str sr="arg0" ve="3">m_check_service</Str>
+			<Str sr="arg1" ve="3">sm_cls</Str>
+			<Str sr="arg2" ve="3">getMethod
+{Method} (String, Class[])</Str>
+			<Str sr="arg3" ve="3">"checkService"</Str>
+			<Str sr="arg4" ve="3">check_service_params_cls</Str>
+			<Str sr="arg5" ve="3"/>
+			<Str sr="arg6" ve="3"/>
+			<Str sr="arg7" ve="3"/>
+			<Str sr="arg8" ve="3"/>
+			<Str sr="arg9" ve="3"/>
+		</Action>
+		<Action sr="act15" ve="7">
+			<code>664</code>
+			<se>false</se>
+			<Str sr="arg0" ve="3">check_service_params</Str>
+			<Str sr="arg1" ve="3">Object[]</Str>
+			<Str sr="arg2" ve="3">new
+{Object[]} (int)</Str>
+			<Str sr="arg3" ve="3">1</Str>
+			<Str sr="arg4" ve="3"/>
+			<Str sr="arg5" ve="3"/>
+			<Str sr="arg6" ve="3"/>
+			<Str sr="arg7" ve="3"/>
+			<Str sr="arg8" ve="3"/>
+			<Str sr="arg9" ve="3"/>
+		</Action>
+		<Action sr="act16" ve="7">
+			<code>664</code>
+			<se>false</se>
+			<Str sr="arg0" ve="3">check_service_params[0]</Str>
+			<Str sr="arg1" ve="3">"window"</Str>
+			<Str sr="arg2" ve="3">assign
+{Object} ()</Str>
+			<Str sr="arg3" ve="3"/>
+			<Str sr="arg4" ve="3"/>
+			<Str sr="arg5" ve="3"/>
+			<Str sr="arg6" ve="3"/>
+			<Str sr="arg7" ve="3"/>
+			<Str sr="arg8" ve="3"/>
+			<Str sr="arg9" ve="3"/>
+		</Action>
+		<Action sr="act17" ve="7">
+			<code>664</code>
+			<se>false</se>
+			<Str sr="arg0" ve="3">local_object2</Str>
+			<Str sr="arg1" ve="3">m_check_service</Str>
+			<Str sr="arg2" ve="3">invoke
+{Object} (Object, Object[])</Str>
+			<Str sr="arg3" ve="3"/>
+			<Str sr="arg4" ve="3">check_service_params</Str>
+			<Str sr="arg5" ve="3"/>
+			<Str sr="arg6" ve="3"/>
+			<Str sr="arg7" ve="3"/>
+			<Str sr="arg8" ve="3"/>
+			<Str sr="arg9" ve="3"/>
+		</Action>
+		<Action sr="act18" ve="7">
+			<code>547</code>
+			<Str sr="arg0" ve="3">%cls_name</Str>
+			<Str sr="arg1" ve="3">android.view.IWindowManager$Stub</Str>
+			<Int sr="arg2" val="0"/>
+			<Int sr="arg3" val="0"/>
+			<Int sr="arg4" val="0"/>
+		</Action>
+		<Action sr="act19" ve="7">
+			<code>664</code>
+			<se>false</se>
+			<Str sr="arg0" ve="3">iwms_cls</Str>
+			<Str sr="arg1" ve="3">Class</Str>
+			<Str sr="arg2" ve="3">forName
+{Class} (String)</Str>
+			<Str sr="arg3" ve="3">"%cls_name"</Str>
+			<Str sr="arg4" ve="3"/>
+			<Str sr="arg5" ve="3"/>
+			<Str sr="arg6" ve="3"/>
+			<Str sr="arg7" ve="3"/>
+			<Str sr="arg8" ve="3"/>
+			<Str sr="arg9" ve="3"/>
+		</Action>
+		<Action sr="act2" ve="7">
+			<code>130</code>
+			<label>Exception</label>
+			<Str sr="arg0" ve="3">*stopTasksBecauseException</Str>
+			<Int sr="arg1">
+				<var>%priority</var>
+			</Int>
+			<Str sr="arg2" ve="3">The number of overscan arguments must be 4</Str>
+			<Str sr="arg3" ve="3">0</Str>
+			<Str sr="arg4" ve="3"/>
+			<Int sr="arg5" val="0"/>
+			<ConditionList sr="if">
+				<Condition sr="c0" ve="3">
+					<lhs>%par1(#)</lhs>
+					<op>1</op>
+					<rhs>4</rhs>
+				</Condition>
+			</ConditionList>
+		</Action>
+		<Action sr="act20" ve="7">
+			<code>130</code>
+			<label>Exception</label>
+			<Str sr="arg0" ve="3">*stopTasksBecauseException</Str>
+			<Int sr="arg1">
+				<var>%priority</var>
+			</Int>
+			<Str sr="arg2" ve="3">Failed to get the Class object (%cls_name)</Str>
+			<Str sr="arg3" ve="3">0</Str>
+			<Str sr="arg4" ve="3"/>
+			<Int sr="arg5" val="0"/>
+			<ConditionList sr="if">
+				<bool0>Or</bool0>
+				<Condition sr="c0" ve="3">
+					<lhs>%err</lhs>
+					<op>12</op>
+					<rhs></rhs>
+				</Condition>
+				<Condition sr="c1" ve="3">
+					<lhs>iwms_cls</lhs>
+					<op>0</op>
+					<rhs>null</rhs>
+				</Condition>
+			</ConditionList>
+		</Action>
+		<Action sr="act21" ve="7">
+			<code>547</code>
+			<Str sr="arg0" ve="3">%cls_name</Str>
+			<Str sr="arg1" ve="3">android.os.IBinder</Str>
+			<Int sr="arg2" val="0"/>
+			<Int sr="arg3" val="0"/>
+			<Int sr="arg4" val="0"/>
+		</Action>
+		<Action sr="act22" ve="7">
+			<code>664</code>
+			<se>false</se>
+			<Str sr="arg0" ve="3">ibinder_cls</Str>
+			<Str sr="arg1" ve="3">Class</Str>
+			<Str sr="arg2" ve="3">forName
+{Class} (String)</Str>
+			<Str sr="arg3" ve="3">"%cls_name"</Str>
+			<Str sr="arg4" ve="3"/>
+			<Str sr="arg5" ve="3"/>
+			<Str sr="arg6" ve="3"/>
+			<Str sr="arg7" ve="3"/>
+			<Str sr="arg8" ve="3"/>
+			<Str sr="arg9" ve="3"/>
+		</Action>
+		<Action sr="act23" ve="7">
+			<code>130</code>
+			<label>Exception</label>
+			<Str sr="arg0" ve="3">*stopTasksBecauseException</Str>
+			<Int sr="arg1">
+				<var>%priority</var>
+			</Int>
+			<Str sr="arg2" ve="3">Failed to get the Class object (%cls_name)</Str>
+			<Str sr="arg3" ve="3">0</Str>
+			<Str sr="arg4" ve="3"/>
+			<Int sr="arg5" val="0"/>
+			<ConditionList sr="if">
+				<bool0>Or</bool0>
+				<Condition sr="c0" ve="3">
+					<lhs>%err</lhs>
+					<op>12</op>
+					<rhs></rhs>
+				</Condition>
+				<Condition sr="c1" ve="3">
+					<lhs>ibinder_cls</lhs>
+					<op>0</op>
+					<rhs>null</rhs>
+				</Condition>
+			</ConditionList>
+		</Action>
+		<Action sr="act24" ve="7">
+			<code>664</code>
+			<se>false</se>
+			<Str sr="arg0" ve="3">m_as_interface_params_cls</Str>
+			<Str sr="arg1" ve="3">Class[]</Str>
+			<Str sr="arg2" ve="3">new
+{Class[]} (int)</Str>
+			<Str sr="arg3" ve="3">1</Str>
+			<Str sr="arg4" ve="3"/>
+			<Str sr="arg5" ve="3"/>
+			<Str sr="arg6" ve="3"/>
+			<Str sr="arg7" ve="3"/>
+			<Str sr="arg8" ve="3"/>
+			<Str sr="arg9" ve="3"/>
+		</Action>
+		<Action sr="act25" ve="7">
+			<code>664</code>
+			<se>false</se>
+			<Str sr="arg0" ve="3">m_as_interface_params_cls[0]</Str>
+			<Str sr="arg1" ve="3">ibinder_cls</Str>
+			<Str sr="arg2" ve="3">assign
+{Class} ()</Str>
+			<Str sr="arg3" ve="3"/>
+			<Str sr="arg4" ve="3"/>
+			<Str sr="arg5" ve="3"/>
+			<Str sr="arg6" ve="3"/>
+			<Str sr="arg7" ve="3"/>
+			<Str sr="arg8" ve="3"/>
+			<Str sr="arg9" ve="3"/>
+		</Action>
+		<Action sr="act26" ve="7">
+			<code>664</code>
+			<se>false</se>
+			<Str sr="arg0" ve="3">m_as_interface</Str>
+			<Str sr="arg1" ve="3">iwms_cls</Str>
+			<Str sr="arg2" ve="3">getMethod
+{Method} (String, Class[])</Str>
+			<Str sr="arg3" ve="3">"asInterface"</Str>
+			<Str sr="arg4" ve="3">m_as_interface_params_cls</Str>
+			<Str sr="arg5" ve="3"/>
+			<Str sr="arg6" ve="3"/>
+			<Str sr="arg7" ve="3"/>
+			<Str sr="arg8" ve="3"/>
+			<Str sr="arg9" ve="3"/>
+		</Action>
+		<Action sr="act27" ve="7">
+			<code>664</code>
+			<se>false</se>
+			<Str sr="arg0" ve="3">m_as_interface_params</Str>
+			<Str sr="arg1" ve="3">Object[]</Str>
+			<Str sr="arg2" ve="3">new
+{Object[]} (int)</Str>
+			<Str sr="arg3" ve="3">1</Str>
+			<Str sr="arg4" ve="3"/>
+			<Str sr="arg5" ve="3"/>
+			<Str sr="arg6" ve="3"/>
+			<Str sr="arg7" ve="3"/>
+			<Str sr="arg8" ve="3"/>
+			<Str sr="arg9" ve="3"/>
+		</Action>
+		<Action sr="act28" ve="7">
+			<code>664</code>
+			<se>false</se>
+			<Str sr="arg0" ve="3">m_as_interface_params[0]</Str>
+			<Str sr="arg1" ve="3">local_object2</Str>
+			<Str sr="arg2" ve="3">assign
+{Object} ()</Str>
+			<Str sr="arg3" ve="3"/>
+			<Str sr="arg4" ve="3"/>
+			<Str sr="arg5" ve="3"/>
+			<Str sr="arg6" ve="3"/>
+			<Str sr="arg7" ve="3"/>
+			<Str sr="arg8" ve="3"/>
+			<Str sr="arg9" ve="3"/>
+		</Action>
+		<Action sr="act29" ve="7">
+			<code>664</code>
+			<se>false</se>
+			<Str sr="arg0" ve="3">iwm</Str>
+			<Str sr="arg1" ve="3">m_as_interface</Str>
+			<Str sr="arg2" ve="3">invoke
+{Object} (Object, Object[])</Str>
+			<Str sr="arg3" ve="3"/>
+			<Str sr="arg4" ve="3">m_as_interface_params</Str>
+			<Str sr="arg5" ve="3"/>
+			<Str sr="arg6" ve="3"/>
+			<Str sr="arg7" ve="3"/>
+			<Str sr="arg8" ve="3"/>
+			<Str sr="arg9" ve="3"/>
+		</Action>
+		<Action sr="act3" ve="7">
+			<code>664</code>
+			<Str sr="arg0" ve="3">set_overscan_params</Str>
+			<Str sr="arg1" ve="3">Object[]</Str>
+			<Str sr="arg2" ve="3">new
+{Object[]} (int)</Str>
+			<Str sr="arg3" ve="3">5</Str>
+			<Str sr="arg4" ve="3"/>
+			<Str sr="arg5" ve="3"/>
+			<Str sr="arg6" ve="3"/>
+			<Str sr="arg7" ve="3"/>
+			<Str sr="arg8" ve="3"/>
+			<Str sr="arg9" ve="3"/>
+		</Action>
+		<Action sr="act30" ve="7">
+			<code>547</code>
+			<Str sr="arg0" ve="3">%cls_name</Str>
+			<Str sr="arg1" ve="3">android.view.IWindowManager</Str>
+			<Int sr="arg2" val="0"/>
+			<Int sr="arg3" val="0"/>
+			<Int sr="arg4" val="0"/>
+		</Action>
+		<Action sr="act31" ve="7">
+			<code>664</code>
+			<se>false</se>
+			<Str sr="arg0" ve="3">iwm_cls</Str>
+			<Str sr="arg1" ve="3">Class</Str>
+			<Str sr="arg2" ve="3">forName
+{Class} (String)</Str>
+			<Str sr="arg3" ve="3">"%cls_name"</Str>
+			<Str sr="arg4" ve="3"/>
+			<Str sr="arg5" ve="3"/>
+			<Str sr="arg6" ve="3"/>
+			<Str sr="arg7" ve="3"/>
+			<Str sr="arg8" ve="3"/>
+			<Str sr="arg9" ve="3"/>
+		</Action>
+		<Action sr="act32" ve="7">
+			<code>130</code>
+			<label>Exception</label>
+			<Str sr="arg0" ve="3">*stopTasksBecauseException</Str>
+			<Int sr="arg1">
+				<var>%priority</var>
+			</Int>
+			<Str sr="arg2" ve="3">Failed to get the Class object (%cls_name)</Str>
+			<Str sr="arg3" ve="3">0</Str>
+			<Str sr="arg4" ve="3"/>
+			<Int sr="arg5" val="0"/>
+			<ConditionList sr="if">
+				<bool0>Or</bool0>
+				<Condition sr="c0" ve="3">
+					<lhs>%err</lhs>
+					<op>12</op>
+					<rhs></rhs>
+				</Condition>
+				<Condition sr="c1" ve="3">
+					<lhs>iwm_cls</lhs>
+					<op>0</op>
+					<rhs>null</rhs>
+				</Condition>
+			</ConditionList>
+		</Action>
+		<Action sr="act33" ve="7">
+			<code>664</code>
+			<se>false</se>
+			<Str sr="arg0" ve="3">m_set_overscan_params_cls_type</Str>
+			<Str sr="arg1" ve="3">Class[]</Str>
+			<Str sr="arg2" ve="3">new
+{Class[]} (int)</Str>
+			<Str sr="arg3" ve="3">5</Str>
+			<Str sr="arg4" ve="3"/>
+			<Str sr="arg5" ve="3"/>
+			<Str sr="arg6" ve="3"/>
+			<Str sr="arg7" ve="3"/>
+			<Str sr="arg8" ve="3"/>
+			<Str sr="arg9" ve="3"/>
+		</Action>
+		<Action sr="act34" ve="7">
+			<code>664</code>
+			<se>false</se>
+			<Str sr="arg0" ve="3">cls</Str>
+			<Str sr="arg1" ve="3">1</Str>
+			<Str sr="arg2" ve="3">getClass
+{Class} ()</Str>
+			<Str sr="arg3" ve="3"/>
+			<Str sr="arg4" ve="3"/>
+			<Str sr="arg5" ve="3"/>
+			<Str sr="arg6" ve="3"/>
+			<Str sr="arg7" ve="3"/>
+			<Str sr="arg8" ve="3"/>
+			<Str sr="arg9" ve="3"/>
+		</Action>
+		<Action sr="act35" ve="7">
+			<code>664</code>
+			<se>false</se>
+			<Str sr="arg0" ve="3">fld</Str>
+			<Str sr="arg1" ve="3">cls</Str>
+			<Str sr="arg2" ve="3">getField
+{java.lang.reflect.Field} (String)</Str>
+			<Str sr="arg3" ve="3">"TYPE"</Str>
+			<Str sr="arg4" ve="3"/>
+			<Str sr="arg5" ve="3"/>
+			<Str sr="arg6" ve="3"/>
+			<Str sr="arg7" ve="3"/>
+			<Str sr="arg8" ve="3"/>
+			<Str sr="arg9" ve="3"/>
+		</Action>
+		<Action sr="act36" ve="7">
+			<code>664</code>
+			<se>false</se>
+			<Str sr="arg0" ve="3">(Class) integer_cls_type</Str>
+			<Str sr="arg1" ve="3">fld</Str>
+			<Str sr="arg2" ve="3">get
+{Object} (Object)</Str>
+			<Str sr="arg3" ve="3"/>
+			<Str sr="arg4" ve="3"/>
+			<Str sr="arg5" ve="3"/>
+			<Str sr="arg6" ve="3"/>
+			<Str sr="arg7" ve="3"/>
+			<Str sr="arg8" ve="3"/>
+			<Str sr="arg9" ve="3"/>
+		</Action>
+		<Action sr="act37" ve="7">
+			<code>39</code>
+			<Str sr="arg0" ve="3">%index</Str>
+			<Str sr="arg1" ve="3">0:4</Str>
+		</Action>
+		<Action sr="act38" ve="7">
+			<code>664</code>
+			<se>false</se>
+			<Str sr="arg0" ve="3">m_set_overscan_params_cls_type[%index]</Str>
+			<Str sr="arg1" ve="3">integer_cls_type</Str>
+			<Str sr="arg2" ve="3">assign
+{Class} ()</Str>
+			<Str sr="arg3" ve="3"/>
+			<Str sr="arg4" ve="3"/>
+			<Str sr="arg5" ve="3"/>
+			<Str sr="arg6" ve="3"/>
+			<Str sr="arg7" ve="3"/>
+			<Str sr="arg8" ve="3"/>
+			<Str sr="arg9" ve="3"/>
+		</Action>
+		<Action sr="act39" ve="7">
+			<code>40</code>
+		</Action>
+		<Action sr="act4" ve="7">
+			<code>39</code>
+			<Str sr="arg0" ve="3">%index</Str>
+			<Str sr="arg1" ve="3">1:4</Str>
+		</Action>
+		<Action sr="act40" ve="7">
+			<code>664</code>
+			<se>false</se>
+			<Str sr="arg0" ve="3">m_set_overscan</Str>
+			<Str sr="arg1" ve="3">iwm_cls</Str>
+			<Str sr="arg2" ve="3">getMethod
+{Method} (String, Class[])</Str>
+			<Str sr="arg3" ve="3">"setOverscan"</Str>
+			<Str sr="arg4" ve="3">m_set_overscan_params_cls_type</Str>
+			<Str sr="arg5" ve="3"/>
+			<Str sr="arg6" ve="3"/>
+			<Str sr="arg7" ve="3"/>
+			<Str sr="arg8" ve="3"/>
+			<Str sr="arg9" ve="3"/>
+		</Action>
+		<Action sr="act41" ve="7">
+			<code>664</code>
+			<se>false</se>
+			<Str sr="arg0" ve="3"/>
+			<Str sr="arg1" ve="3">m_set_overscan</Str>
+			<Str sr="arg2" ve="3">invoke
+{Object} (Object, Object[])</Str>
+			<Str sr="arg3" ve="3">iwm</Str>
+			<Str sr="arg4" ve="3">set_overscan_params</Str>
+			<Str sr="arg5" ve="3"/>
+			<Str sr="arg6" ve="3"/>
+			<Str sr="arg7" ve="3"/>
+			<Str sr="arg8" ve="3"/>
+			<Str sr="arg9" ve="3"/>
+		</Action>
+		<Action sr="act42" ve="7">
+			<code>130</code>
+			<label>Exception</label>
+			<Str sr="arg0" ve="3">*stopCurrentTaskBecauseException</Str>
+			<Int sr="arg1">
+				<var>%priority</var>
+			</Int>
+			<Str sr="arg2" ve="3">Overscan failed. (Please check if the WRITE_SECURE_SETTINGS permission has been granted)</Str>
+			<Str sr="arg3" ve="3"/>
+			<Str sr="arg4" ve="3"/>
+			<Int sr="arg5" val="1"/>
+			<ConditionList sr="if">
+				<Condition sr="c0" ve="3">
+					<lhs>%err</lhs>
+					<op>12</op>
+					<rhs></rhs>
+				</Condition>
+			</ConditionList>
+		</Action>
+		<Action sr="act43" ve="7">
+			<code>126</code>
+			<Str sr="arg0" ve="3">true</Str>
+			<Int sr="arg1" val="1"/>
+		</Action>
+		<Action sr="act5" ve="7">
+			<code>664</code>
+			<se>false</se>
+			<Str sr="arg0" ve="3">set_overscan_params[%index]</Str>
+			<Str sr="arg1" ve="3">Integer</Str>
+			<Str sr="arg2" ve="3">valueOf
+{Integer} (int)</Str>
+			<Str sr="arg3" ve="3">%par1(%index)</Str>
+			<Str sr="arg4" ve="3"/>
+			<Str sr="arg5" ve="3"/>
+			<Str sr="arg6" ve="3"/>
+			<Str sr="arg7" ve="3"/>
+			<Str sr="arg8" ve="3"/>
+			<Str sr="arg9" ve="3"/>
+		</Action>
+		<Action sr="act6" ve="7">
+			<code>130</code>
+			<label>Exception</label>
+			<Str sr="arg0" ve="3">*stopTasksBecauseException</Str>
+			<Int sr="arg1">
+				<var>%priority</var>
+			</Int>
+			<Str sr="arg2" ve="3">Argument %index (%par1(%index)) is illegal</Str>
+			<Str sr="arg3" ve="3">0</Str>
+			<Str sr="arg4" ve="3"/>
+			<Int sr="arg5" val="0"/>
+			<ConditionList sr="if">
+				<Condition sr="c0" ve="3">
+					<lhs>%err</lhs>
+					<op>12</op>
+					<rhs></rhs>
+				</Condition>
+			</ConditionList>
+		</Action>
+		<Action sr="act7" ve="7">
+			<code>40</code>
+		</Action>
+		<Action sr="act8" ve="7">
+			<code>664</code>
+			<se>false</se>
+			<Str sr="arg0" ve="3">set_overscan_params[0]</Str>
+			<Str sr="arg1" ve="3">Integer</Str>
+			<Str sr="arg2" ve="3">valueOf
+{Integer} (int)</Str>
+			<Str sr="arg3" ve="3">0</Str>
+			<Str sr="arg4" ve="3"/>
+			<Str sr="arg5" ve="3"/>
+			<Str sr="arg6" ve="3"/>
+			<Str sr="arg7" ve="3"/>
+			<Str sr="arg8" ve="3"/>
+			<Str sr="arg9" ve="3"/>
+		</Action>
+		<Action sr="act9" ve="7">
+			<code>547</code>
+			<Str sr="arg0" ve="3">%cls_name</Str>
+			<Str sr="arg1" ve="3">android.os.ServiceManager</Str>
+			<Int sr="arg2" val="0"/>
+			<Int sr="arg3" val="0"/>
+			<Int sr="arg4" val="0"/>
+		</Action>
+	</Task>
+	<Task sr="task2462">
+		<id>2462</id>
+		<nme>*setOverscan</nme>
+		<pri>100</pri>
+		<rty>1</rty>
+		<Action sr="act0" ve="7">
+			<code>130</code>
+			<Str sr="arg0" ve="3">setOverscanSettingMode</Str>
+			<Int sr="arg1">
+				<var>%priority</var>
+			</Int>
+			<Str sr="arg2" ve="3"/>
+			<Str sr="arg3" ve="3"/>
+			<Str sr="arg4" ve="3"/>
+			<Int sr="arg5" val="0"/>
+			<ConditionList sr="if">
+				<Condition sr="c0" ve="3">
+					<lhs>%OVERSCAN_SETTING_MODE</lhs>
+					<op>3</op>
+					<rhs>1/2</rhs>
+				</Condition>
+			</ConditionList>
+		</Action>
+		<Action sr="act1" ve="7">
+			<code>130</code>
+			<Str sr="arg0" ve="3">*$setOverscan@%OVERSCAN_SETTING_MODE</Str>
+			<Int sr="arg1">
+				<var>%priority</var>
+			</Int>
+			<Str sr="arg2" ve="3">%par1</Str>
+			<Str sr="arg3" ve="3"/>
+			<Str sr="arg4" ve="3">%result</Str>
+			<Int sr="arg5" val="0"/>
+		</Action>
+		<Action sr="act2" ve="7">
+			<code>37</code>
+			<ConditionList sr="if">
+				<Condition sr="c0" ve="3">
+					<lhs>%result</lhs>
+					<op>3</op>
+					<rhs>true</rhs>
+				</Condition>
+			</ConditionList>
+		</Action>
+		<Action sr="act3" ve="7">
+			<code>549</code>
+			<Str sr="arg0" ve="3">%OVERSCAN_SETTING_MODE</Str>
+			<Int sr="arg1" val="0"/>
+			<Int sr="arg2" val="0"/>
+		</Action>
+	</Task>
+</TaskerData>
